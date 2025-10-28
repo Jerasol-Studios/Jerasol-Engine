@@ -43,19 +43,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = C:\Users\student\Documents\engine-ui\mingw64\bin\cmake.exe
+CMAKE_COMMAND = C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\cmake.exe
 
 # The command to remove a file.
-RM = C:\Users\student\Documents\engine-ui\mingw64\bin\cmake.exe -E rm -f
+RM = C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\cmake.exe -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\student\Documents\engine-ui
+CMAKE_SOURCE_DIR = C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\student\Documents\engine-ui\build
+CMAKE_BINARY_DIR = C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/engine-ui.dir/depend.make
@@ -71,162 +71,146 @@ include CMakeFiles/engine-ui.dir/flags.make
 CMakeFiles/engine-ui.dir/codegen:
 .PHONY : CMakeFiles/engine-ui.dir/codegen
 
-CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj: CMakeFiles/engine-ui.dir/flags.make
-CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj: CMakeFiles/engine-ui.dir/includes_CXX.rsp
-CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj: C:/Users/student/Documents/engine-ui/src/compiler_interface.cpp
-CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj: CMakeFiles/engine-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj -MF CMakeFiles\engine-ui.dir\src\compiler_interface.cpp.obj.d -o CMakeFiles\engine-ui.dir\src\compiler_interface.cpp.obj -c C:\Users\student\Documents\engine-ui\src\compiler_interface.cpp
-
-CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.i"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\engine-ui\src\compiler_interface.cpp > CMakeFiles\engine-ui.dir\src\compiler_interface.cpp.i
-
-CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.s"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\engine-ui\src\compiler_interface.cpp -o CMakeFiles\engine-ui.dir\src\compiler_interface.cpp.s
-
-CMakeFiles/engine-ui.dir/src/flowchart.cpp.obj: CMakeFiles/engine-ui.dir/flags.make
-CMakeFiles/engine-ui.dir/src/flowchart.cpp.obj: CMakeFiles/engine-ui.dir/includes_CXX.rsp
-CMakeFiles/engine-ui.dir/src/flowchart.cpp.obj: C:/Users/student/Documents/engine-ui/src/flowchart.cpp
-CMakeFiles/engine-ui.dir/src/flowchart.cpp.obj: CMakeFiles/engine-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/engine-ui.dir/src/flowchart.cpp.obj"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/src/flowchart.cpp.obj -MF CMakeFiles\engine-ui.dir\src\flowchart.cpp.obj.d -o CMakeFiles\engine-ui.dir\src\flowchart.cpp.obj -c C:\Users\student\Documents\engine-ui\src\flowchart.cpp
-
-CMakeFiles/engine-ui.dir/src/flowchart.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine-ui.dir/src/flowchart.cpp.i"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\engine-ui\src\flowchart.cpp > CMakeFiles\engine-ui.dir\src\flowchart.cpp.i
-
-CMakeFiles/engine-ui.dir/src/flowchart.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine-ui.dir/src/flowchart.cpp.s"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\engine-ui\src\flowchart.cpp -o CMakeFiles\engine-ui.dir\src\flowchart.cpp.s
-
 CMakeFiles/engine-ui.dir/src/main.cpp.obj: CMakeFiles/engine-ui.dir/flags.make
 CMakeFiles/engine-ui.dir/src/main.cpp.obj: CMakeFiles/engine-ui.dir/includes_CXX.rsp
-CMakeFiles/engine-ui.dir/src/main.cpp.obj: C:/Users/student/Documents/engine-ui/src/main.cpp
+CMakeFiles/engine-ui.dir/src/main.cpp.obj: C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/src/main.cpp
 CMakeFiles/engine-ui.dir/src/main.cpp.obj: CMakeFiles/engine-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/engine-ui.dir/src/main.cpp.obj"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/src/main.cpp.obj -MF CMakeFiles\engine-ui.dir\src\main.cpp.obj.d -o CMakeFiles\engine-ui.dir\src\main.cpp.obj -c C:\Users\student\Documents\engine-ui\src\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/engine-ui.dir/src/main.cpp.obj"
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/src/main.cpp.obj -MF CMakeFiles\engine-ui.dir\src\main.cpp.obj.d -o CMakeFiles\engine-ui.dir\src\main.cpp.obj -c C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\main.cpp
 
 CMakeFiles/engine-ui.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine-ui.dir/src/main.cpp.i"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\engine-ui\src\main.cpp > CMakeFiles\engine-ui.dir\src\main.cpp.i
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\main.cpp > CMakeFiles\engine-ui.dir\src\main.cpp.i
 
 CMakeFiles/engine-ui.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine-ui.dir/src/main.cpp.s"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\engine-ui\src\main.cpp -o CMakeFiles\engine-ui.dir\src\main.cpp.s
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\main.cpp -o CMakeFiles\engine-ui.dir\src\main.cpp.s
 
 CMakeFiles/engine-ui.dir/src/ui.cpp.obj: CMakeFiles/engine-ui.dir/flags.make
 CMakeFiles/engine-ui.dir/src/ui.cpp.obj: CMakeFiles/engine-ui.dir/includes_CXX.rsp
-CMakeFiles/engine-ui.dir/src/ui.cpp.obj: C:/Users/student/Documents/engine-ui/src/ui.cpp
+CMakeFiles/engine-ui.dir/src/ui.cpp.obj: C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/src/ui.cpp
 CMakeFiles/engine-ui.dir/src/ui.cpp.obj: CMakeFiles/engine-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/engine-ui.dir/src/ui.cpp.obj"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/src/ui.cpp.obj -MF CMakeFiles\engine-ui.dir\src\ui.cpp.obj.d -o CMakeFiles\engine-ui.dir\src\ui.cpp.obj -c C:\Users\student\Documents\engine-ui\src\ui.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/engine-ui.dir/src/ui.cpp.obj"
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/src/ui.cpp.obj -MF CMakeFiles\engine-ui.dir\src\ui.cpp.obj.d -o CMakeFiles\engine-ui.dir\src\ui.cpp.obj -c C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\ui.cpp
 
 CMakeFiles/engine-ui.dir/src/ui.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine-ui.dir/src/ui.cpp.i"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\engine-ui\src\ui.cpp > CMakeFiles\engine-ui.dir\src\ui.cpp.i
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\ui.cpp > CMakeFiles\engine-ui.dir\src\ui.cpp.i
 
 CMakeFiles/engine-ui.dir/src/ui.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine-ui.dir/src/ui.cpp.s"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\engine-ui\src\ui.cpp -o CMakeFiles\engine-ui.dir\src\ui.cpp.s
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\ui.cpp -o CMakeFiles\engine-ui.dir\src\ui.cpp.s
+
+CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj: CMakeFiles/engine-ui.dir/flags.make
+CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj: CMakeFiles/engine-ui.dir/includes_CXX.rsp
+CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj: C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/src/compiler_interface.cpp
+CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj: CMakeFiles/engine-ui.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj"
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj -MF CMakeFiles\engine-ui.dir\src\compiler_interface.cpp.obj.d -o CMakeFiles\engine-ui.dir\src\compiler_interface.cpp.obj -c C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\compiler_interface.cpp
+
+CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.i"
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\compiler_interface.cpp > CMakeFiles\engine-ui.dir\src\compiler_interface.cpp.i
+
+CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.s"
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\compiler_interface.cpp -o CMakeFiles\engine-ui.dir\src\compiler_interface.cpp.s
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.obj: CMakeFiles/engine-ui.dir/flags.make
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.obj: CMakeFiles/engine-ui.dir/includes_CXX.rsp
-CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.obj: C:/Users/student/Documents/engine-ui/thirdparty/imgui/imgui.cpp
+CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.obj: C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/imgui.cpp
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.obj: CMakeFiles/engine-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.obj"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.obj -MF CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui.cpp.obj.d -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui.cpp.obj -c C:\Users\student\Documents\engine-ui\thirdparty\imgui\imgui.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.obj"
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.obj -MF CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui.cpp.obj.d -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui.cpp.obj -c C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\imgui.cpp
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.i"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\engine-ui\thirdparty\imgui\imgui.cpp > CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui.cpp.i
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\imgui.cpp > CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui.cpp.i
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.s"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\engine-ui\thirdparty\imgui\imgui.cpp -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui.cpp.s
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\imgui.cpp -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui.cpp.s
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.obj: CMakeFiles/engine-ui.dir/flags.make
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.obj: CMakeFiles/engine-ui.dir/includes_CXX.rsp
-CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.obj: C:/Users/student/Documents/engine-ui/thirdparty/imgui/imgui_draw.cpp
+CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.obj: C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/imgui_draw.cpp
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.obj: CMakeFiles/engine-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.obj"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.obj -MF CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_draw.cpp.obj.d -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_draw.cpp.obj -c C:\Users\student\Documents\engine-ui\thirdparty\imgui\imgui_draw.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.obj"
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.obj -MF CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_draw.cpp.obj.d -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_draw.cpp.obj -c C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\imgui_draw.cpp
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.i"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\engine-ui\thirdparty\imgui\imgui_draw.cpp > CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_draw.cpp.i
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\imgui_draw.cpp > CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_draw.cpp.i
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.s"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\engine-ui\thirdparty\imgui\imgui_draw.cpp -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_draw.cpp.s
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\imgui_draw.cpp -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_draw.cpp.s
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.obj: CMakeFiles/engine-ui.dir/flags.make
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.obj: CMakeFiles/engine-ui.dir/includes_CXX.rsp
-CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.obj: C:/Users/student/Documents/engine-ui/thirdparty/imgui/imgui_tables.cpp
+CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.obj: C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/imgui_tables.cpp
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.obj: CMakeFiles/engine-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.obj"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.obj -MF CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_tables.cpp.obj.d -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_tables.cpp.obj -c C:\Users\student\Documents\engine-ui\thirdparty\imgui\imgui_tables.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.obj"
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.obj -MF CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_tables.cpp.obj.d -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_tables.cpp.obj -c C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\imgui_tables.cpp
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.i"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\engine-ui\thirdparty\imgui\imgui_tables.cpp > CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_tables.cpp.i
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\imgui_tables.cpp > CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_tables.cpp.i
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.s"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\engine-ui\thirdparty\imgui\imgui_tables.cpp -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_tables.cpp.s
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\imgui_tables.cpp -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_tables.cpp.s
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.obj: CMakeFiles/engine-ui.dir/flags.make
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.obj: CMakeFiles/engine-ui.dir/includes_CXX.rsp
-CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.obj: C:/Users/student/Documents/engine-ui/thirdparty/imgui/imgui_widgets.cpp
+CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.obj: C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/imgui_widgets.cpp
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.obj: CMakeFiles/engine-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.obj"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.obj -MF CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_widgets.cpp.obj.d -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_widgets.cpp.obj -c C:\Users\student\Documents\engine-ui\thirdparty\imgui\imgui_widgets.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.obj"
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.obj -MF CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_widgets.cpp.obj.d -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_widgets.cpp.obj -c C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\imgui_widgets.cpp
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.i"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\engine-ui\thirdparty\imgui\imgui_widgets.cpp > CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_widgets.cpp.i
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\imgui_widgets.cpp > CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_widgets.cpp.i
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.s"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\engine-ui\thirdparty\imgui\imgui_widgets.cpp -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_widgets.cpp.s
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\imgui_widgets.cpp -o CMakeFiles\engine-ui.dir\thirdparty\imgui\imgui_widgets.cpp.s
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.obj: CMakeFiles/engine-ui.dir/flags.make
 CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.obj: CMakeFiles/engine-ui.dir/includes_CXX.rsp
-CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.obj: C:/Users/student/Documents/engine-ui/thirdparty/imgui/backends/imgui_impl_sdl2.cpp
+CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.obj: C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/backends/imgui_impl_sdl2.cpp
 CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.obj: CMakeFiles/engine-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.obj"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.obj -MF CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdl2.cpp.obj.d -o CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdl2.cpp.obj -c C:\Users\student\Documents\engine-ui\thirdparty\imgui\backends\imgui_impl_sdl2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.obj"
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.obj -MF CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdl2.cpp.obj.d -o CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdl2.cpp.obj -c C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\backends\imgui_impl_sdl2.cpp
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.i"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\engine-ui\thirdparty\imgui\backends\imgui_impl_sdl2.cpp > CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdl2.cpp.i
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\backends\imgui_impl_sdl2.cpp > CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdl2.cpp.i
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.s"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\engine-ui\thirdparty\imgui\backends\imgui_impl_sdl2.cpp -o CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdl2.cpp.s
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\backends\imgui_impl_sdl2.cpp -o CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdl2.cpp.s
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj: CMakeFiles/engine-ui.dir/flags.make
 CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj: CMakeFiles/engine-ui.dir/includes_CXX.rsp
-CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj: C:/Users/student/Documents/engine-ui/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp
+CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj: C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp
 CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj: CMakeFiles/engine-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj -MF CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdlrenderer2.cpp.obj.d -o CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdlrenderer2.cpp.obj -c C:\Users\student\Documents\engine-ui\thirdparty\imgui\backends\imgui_impl_sdlrenderer2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj"
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj -MF CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdlrenderer2.cpp.obj.d -o CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdlrenderer2.cpp.obj -c C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\backends\imgui_impl_sdlrenderer2.cpp
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.i"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\engine-ui\thirdparty\imgui\backends\imgui_impl_sdlrenderer2.cpp > CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdlrenderer2.cpp.i
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\backends\imgui_impl_sdlrenderer2.cpp > CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdlrenderer2.cpp.i
 
 CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.s"
-	C:\Users\student\Documents\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\engine-ui\thirdparty\imgui\backends\imgui_impl_sdlrenderer2.cpp -o CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdlrenderer2.cpp.s
+	C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\imgui\backends\imgui_impl_sdlrenderer2.cpp -o CMakeFiles\engine-ui.dir\thirdparty\imgui\backends\imgui_impl_sdlrenderer2.cpp.s
 
 # Object files for target engine-ui
 engine__ui_OBJECTS = \
-"CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj" \
-"CMakeFiles/engine-ui.dir/src/flowchart.cpp.obj" \
 "CMakeFiles/engine-ui.dir/src/main.cpp.obj" \
 "CMakeFiles/engine-ui.dir/src/ui.cpp.obj" \
+"CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj" \
 "CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.obj" \
 "CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.obj" \
 "CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.obj" \
@@ -237,10 +221,9 @@ engine__ui_OBJECTS = \
 # External object files for target engine-ui
 engine__ui_EXTERNAL_OBJECTS =
 
-engine-ui.exe: CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj
-engine-ui.exe: CMakeFiles/engine-ui.dir/src/flowchart.cpp.obj
 engine-ui.exe: CMakeFiles/engine-ui.dir/src/main.cpp.obj
 engine-ui.exe: CMakeFiles/engine-ui.dir/src/ui.cpp.obj
+engine-ui.exe: CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj
 engine-ui.exe: CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.obj
 engine-ui.exe: CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.obj
 engine-ui.exe: CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.obj
@@ -251,7 +234,7 @@ engine-ui.exe: CMakeFiles/engine-ui.dir/build.make
 engine-ui.exe: CMakeFiles/engine-ui.dir/linkLibs.rsp
 engine-ui.exe: CMakeFiles/engine-ui.dir/objects1.rsp
 engine-ui.exe: CMakeFiles/engine-ui.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\student\Documents\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable engine-ui.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable engine-ui.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\engine-ui.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -263,6 +246,6 @@ CMakeFiles/engine-ui.dir/clean:
 .PHONY : CMakeFiles/engine-ui.dir/clean
 
 CMakeFiles/engine-ui.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\student\Documents\engine-ui C:\Users\student\Documents\engine-ui C:\Users\student\Documents\engine-ui\build C:\Users\student\Documents\engine-ui\build C:\Users\student\Documents\engine-ui\build\CMakeFiles\engine-ui.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build\CMakeFiles\engine-ui.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/engine-ui.dir/depend
 

@@ -1,132 +1,83 @@
 #include "compiler_interface.h"
-#include <cstdlib>
-#include <fstream>
-#include <sstream>
 #include <filesystem>
-#include <vector>
-
-#ifdef _WIN32
-#define WIN32_LEAN_AND_MEAN
+#include <cstdio>
 #include <windows.h>
-#endif
+#include <iostream>
 
-namespace fs = std::filesystem;
+std::string compilerOutput;
 
-// Helper: read whole file
-static std::string readFileToString(const std::string& path) {
-    std::ifstream in(path, std::ios::binary);
-    if (!in) return std::string();
-    std::ostringstream ss;
-    ss << in.rdbuf();
-    return ss.str();
-}
-
-// Helper: ensure parent directory exists
-static void ensureParentDir(const std::string& path) {
-    fs::path p = fs::path(path).parent_path();
-    if (!p.empty() && !fs::exists(p)) fs::create_directories(p);
-}
-
-// Build command and run it redirecting stdout+stderr to a log file, then read the log.
-int compileWithMinGW(const std::string& sourcePath,
-                     const std::string& exePath,
-                     const std::string& mingwGppPath,
-                     const std::string& extraFlags,
-                     std::string& outLog)
+void RunCompiler(const std::string& sourceCode)
 {
-    outLog.clear();
+    namespace fs = std::filesystem;
+    compilerOutput.clear();
+    compilerOutput += "[Compiler] Running g++...\n";
 
-    // Paths
-    std::string logPath = "logs/build_tool.log";
-    ensureParentDir(logPath);
-    ensureParentDir(exePath);
+    try {
+        // Determine executable directory
+        char exePath[MAX_PATH];
+        GetModuleFileNameA(NULL, exePath, MAX_PATH);
+        fs::path exeDir = fs::path(exePath).parent_path();
 
-    // Quote paths for Windows/space-safety
-    auto quote = [](const std::string& s){
-        std::string r = "\"";
-        for (char c : s) {
-            if (c == '\\') r += '/'; // use forward slashes for system command safety
-            r.push_back(c);
+        // Path to compiler
+        fs::path gppPath = exeDir / "mingw64" / "bin" / "g++.exe";
+        if (!fs::exists(gppPath)) {
+            compilerOutput += "[ERROR] g++.exe not found! Expected at:\n";
+            compilerOutput += gppPath.string() + "\n";
+            return;
         }
-        r += "\"";
-        return r;
-    };
 
-    // Build command:
-    // "<g++>" -std=c++17 -O2 -static-libgcc -static-libstdc++ -o "<exe>" "<source>" <extra> > logs/build_tool.log 2>&1
-    std::ostringstream cmd;
-    cmd << quote(mingwGppPath)
-        << " -std=c++17 "
-        << extraFlags << " "
-        << "-o " << quote(exePath) << " "
-        << quote(sourcePath)
-        << " > " << quote(logPath) << " 2>&1";
+        // Prepare temp build directory
+        fs::path tempDir = exeDir / "build" / "temp";
+        fs::create_directories(tempDir);
 
-    // Run command
-    int rc = std::system(cmd.str().c_str());
+        fs::path tempSource = tempDir / "user_code.cpp";
+        fs::path outExe = tempDir / "user_program.exe";
 
-    // read log
-    outLog = readFileToString(logPath);
+        // Write source code to file
+        FILE* f = fopen(tempSource.string().c_str(), "w");
+        if (!f) {
+            compilerOutput += "[ERROR] Could not create temp source file.\n";
+            return;
+        }
+        fwrite(sourceCode.c_str(), 1, sourceCode.size(), f);
+        fclose(f);
 
-    // on Windows, system() will return the exit code in a platform-dependent way; we return rc directly.
-    return rc;
+        // Build compile command
+        std::string command = "\"" + gppPath.string() + "\" \"" + tempSource.string() +
+                              "\" -o \"" + outExe.string() + "\" 2>&1";
+
+        compilerOutput += "Command: " + command + "\n";
+
+        // Run compiler and capture output
+        FILE* pipe = _popen(command.c_str(), "r");
+        if (!pipe) {
+            compilerOutput += "[ERROR] Failed to start compiler process.\n";
+            return;
+        }
+
+        char buffer[256];
+        while (fgets(buffer, sizeof(buffer), pipe))
+            compilerOutput += buffer;
+        int result = _pclose(pipe);
+
+        if (result == 0) {
+            compilerOutput += "\n[Compiler] Compilation successful.\n";
+            compilerOutput += "[Running program...]\n";
+
+            // Execute compiled program
+            FILE* progPipe = _popen(outExe.string().c_str(), "r");
+            if (progPipe) {
+                while (fgets(buffer, sizeof(buffer), progPipe))
+                    compilerOutput += buffer;
+                _pclose(progPipe);
+            }
+            compilerOutput += "\n[Program finished.]\n";
+        } else {
+            compilerOutput += "\n[Compiler] Compilation failed.\n";
+        }
+
+    } catch (const std::exception& e) {
+        compilerOutput += std::string("[EXCEPTION] ") + e.what() + "\n";
+    }
 }
 
-bool runExecutableNoConsole(const std::string& exePath,
-                            const std::string& workingDir,
-                            std::string& outError)
-{
-    outError.clear();
-
-#ifdef _WIN32
-    // Use CreateProcessA and CREATE_NO_WINDOW so no console pops up.
-    STARTUPINFOA si;
-    PROCESS_INFORMATION pi;
-    ZeroMemory(&si, sizeof(si));
-    si.cb = sizeof(si);
-    ZeroMemory(&pi, sizeof(pi));
-
-    // Prepare command line: surround path in quotes
-    std::string cmdLine = "\"" + exePath + "\"";
-
-    // working dir can be empty (use current)
-    LPCSTR lpWorkDir = nullptr;
-    std::string workDirLocal;
-    if (!workingDir.empty()) { workDirLocal = workingDir; lpWorkDir = workDirLocal.c_str(); }
-
-    BOOL ok = CreateProcessA(
-        nullptr,
-        cmdLine.data(), // NOTE: CreateProcess may modify this buffer in place
-        nullptr,
-        nullptr,
-        FALSE,
-        CREATE_NO_WINDOW,
-        nullptr,
-        lpWorkDir,
-        &si,
-        &pi
-    );
-
-    if (!ok) {
-        DWORD err = GetLastError();
-        std::ostringstream ss;
-        ss << "CreateProcess failed (code " << err << ")";
-        outError = ss.str();
-        return false;
-    }
-
-    // We don't wait: let it run detached. Close handles.
-    CloseHandle(pi.hProcess);
-    CloseHandle(pi.hThread);
-    return true;
-#else
-    // Fallback for non-windows — launch in background
-    std::string cmd = "\"" + exePath + "\" &";
-    int rc = std::system(cmd.c_str());
-    if (rc != 0) {
-        outError = "Failed to launch executable (non-windows path).";
-        return false;
-    }
-    return true;
-#endif
-}
