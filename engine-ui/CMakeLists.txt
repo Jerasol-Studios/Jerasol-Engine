@@ -11,36 +11,52 @@ else()
     set(APP_MODE "GUI")
 endif()
 
-# ==========================================
-# SDL2 Configuration
-# ==========================================
-set(SDL2_DIR "${CMAKE_SOURCE_DIR}/thirdparty/SDL2")
-set(SDL2_INCLUDE_DIR "${SDL2_DIR}/include")
-set(SDL2_LIB_DIR "${SDL2_DIR}/lib")
+message(STATUS "-- Using build mode: ${APP_MODE}")
 
-include_directories(${SDL2_INCLUDE_DIR})
+# ==========================================
+# Directory Setup
+# ==========================================
+set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")
+set(THIRDPARTY_DIR "${CMAKE_SOURCE_DIR}/thirdparty")
+set(OUTPUT_DIR "${CMAKE_SOURCE_DIR}/build/output")
+
+file(MAKE_DIRECTORY ${OUTPUT_DIR})
+
+# ==========================================
+# Include Paths
+# ==========================================
+include_directories(
+    ${SRC_DIR}
+    ${THIRDPARTY_DIR}
+    ${THIRDPARTY_DIR}/SDL2/include/
+    ${THIRDPARTY_DIR}/SDL2/include/SDL2/
+    ${THIRDPARTY_DIR}/imgui
+)
+
+# ==========================================
+# SDL2 Config
+# ==========================================
+set(SDL2_LIB_DIR "${THIRDPARTY_DIR}/SDL2/lib")
 link_directories(${SDL2_LIB_DIR})
 
 # ==========================================
-# ImGui Configuration
+# ImGui Sources
 # ==========================================
-set(IMGUI_DIR "${CMAKE_SOURCE_DIR}/thirdparty/imgui")
-include_directories(${IMGUI_DIR})
-
+set(IMGUI_DIR "${THIRDPARTY_DIR}/imgui")
 set(IMGUI_SOURCES
     ${IMGUI_DIR}/imgui.cpp
     ${IMGUI_DIR}/imgui_draw.cpp
+    ${IMGUI_DIR}/imgui_demo.cpp
     ${IMGUI_DIR}/imgui_widgets.cpp
     ${IMGUI_DIR}/imgui_tables.cpp
     ${IMGUI_DIR}/backends/imgui_impl_sdl2.cpp
+    ${IMGUI_DIR}/backends/imgui_impl_sdlrenderer2.cpp
     ${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp
 )
 
 # ==========================================
-# Source Files
+# Main Sources
 # ==========================================
-set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")
-
 set(SOURCES
     ${SRC_DIR}/main.cpp
     ${SRC_DIR}/ui.cpp
@@ -48,15 +64,13 @@ set(SOURCES
     ${IMGUI_SOURCES}
 )
 
-include_directories(${SRC_DIR})
-
 # ==========================================
-# Executable
+# Build Executable
 # ==========================================
 add_executable(engine-ui ${SOURCES})
 
 # ==========================================
-# Libraries
+# Link Libraries
 # ==========================================
 if(WIN32)
     target_link_libraries(engine-ui PRIVATE
@@ -74,22 +88,27 @@ else()
 endif()
 
 # ==========================================
-# Copy SDL2 DLL (Windows Only)
+# Output Location
+# ==========================================
+set_target_properties(engine-ui PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIR}
+)
+
+# ==========================================
+# Copy SDL2 DLL and Dependencies
 # ==========================================
 if(WIN32)
     add_custom_command(TARGET engine-ui POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
         "${SDL2_LIB_DIR}/SDL2.dll"
-        $<TARGET_FILE_DIR:engine-ui>
+        "${OUTPUT_DIR}/SDL2.dll"
     )
 endif()
 
 # ==========================================
-# Output Folder
+# Final Info
 # ==========================================
-set_target_properties(engine-ui PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/bin"
-)
-
-message(STATUS "Configured engine-ui successfully with SDL2 and ImGui.")
-
+message(STATUS "=====================================")
+message(STATUS "Engine-UI Build Configured Successfully")
+message(STATUS "Output Directory: ${OUTPUT_DIR}")
+message(STATUS "=====================================")

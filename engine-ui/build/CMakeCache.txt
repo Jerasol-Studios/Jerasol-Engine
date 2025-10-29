@@ -15,7 +15,7 @@
 ########################
 
 //No help, variable specified on the command line.
-APP_MODE:UNINITIALIZED=GUI
+APP_MODE:UNINITIALIZED=Gui
 
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/bin/addr2line.exe

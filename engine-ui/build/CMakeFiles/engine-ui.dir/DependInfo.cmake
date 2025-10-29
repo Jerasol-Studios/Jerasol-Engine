@@ -8,12 +8,14 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/src/compiler_interface.cpp" "CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj" "gcc" "CMakeFiles/engine-ui.dir/src/compiler_interface.cpp.obj.d"
+  "C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/src/Compiler_Interface.cpp" "CMakeFiles/engine-ui.dir/src/Compiler_Interface.cpp.obj" "gcc" "CMakeFiles/engine-ui.dir/src/Compiler_Interface.cpp.obj.d"
   "C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/src/main.cpp" "CMakeFiles/engine-ui.dir/src/main.cpp.obj" "gcc" "CMakeFiles/engine-ui.dir/src/main.cpp.obj.d"
   "C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/src/ui.cpp" "CMakeFiles/engine-ui.dir/src/ui.cpp.obj" "gcc" "CMakeFiles/engine-ui.dir/src/ui.cpp.obj.d"
+  "C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/backends/imgui_impl_opengl3.cpp" "CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_opengl3.cpp.obj" "gcc" "CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_opengl3.cpp.obj.d"
   "C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/backends/imgui_impl_sdl2.cpp" "CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.obj" "gcc" "CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdl2.cpp.obj.d"
   "C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp" "CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj" "gcc" "CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp.obj.d"
   "C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/imgui.cpp" "CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.obj" "gcc" "CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui.cpp.obj.d"
+  "C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/imgui_demo.cpp" "CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_demo.cpp.obj" "gcc" "CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_demo.cpp.obj.d"
   "C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/imgui_draw.cpp" "CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.obj" "gcc" "CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_draw.cpp.obj.d"
   "C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/imgui_tables.cpp" "CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.obj" "gcc" "CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_tables.cpp.obj.d"
   "C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/imgui_widgets.cpp" "CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.obj" "gcc" "CMakeFiles/engine-ui.dir/thirdparty/imgui/imgui_widgets.cpp.obj.d"

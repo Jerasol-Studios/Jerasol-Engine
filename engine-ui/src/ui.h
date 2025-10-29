@@ -4,5 +4,4 @@
 
 void RenderUI();
 void SetTheme(bool dark);
-void RunCompiler(const std::string& sourceCode);
-void ShowCompilerOutput();
+

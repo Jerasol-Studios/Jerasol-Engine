@@ -56,9 +56,14 @@ echo ======================================
 echo copying dlls
 echo ======================================
 copy /Y "%SDL_DIR%\lib\SDL2.dll" "%BUILD_DIR%\" >nul
+echo --SDL2.dll Copyed!
 copy /Y "%MINGW_DIR%\bin\libgcc_s_seh-1.dll" "%BUILD_DIR%\" >nul 
+echo --libgcc_s_seh-1.dll Copyed!
 copy /Y "%MINGW_DIR%\bin\libstdc++-6.dll" "%BUILD_DIR%\" >nul 
+echo --ibstdc++-6.dll Copyed!
 copy /Y "%MINGW_DIR%\bin\libwinpthread-1.dll" "%BUILD_DIR%\" >nul 
+echo --libwinpthread-1.dll Copyed!
+echo ======================================
 echo dlls have succesfully been copyed
 echo ======================================
 

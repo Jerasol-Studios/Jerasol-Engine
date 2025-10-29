@@ -1,83 +1,94 @@
-#include "compiler_interface.h"
+#include "Compiler_Interface.h"
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <thread>
 #include <filesystem>
 #include <cstdio>
+#include <cstdlib>
+
+#ifdef _WIN32
 #include <windows.h>
-#include <iostream>
+#endif
 
-std::string compilerOutput;
+namespace fs = std::filesystem;
 
-void RunCompiler(const std::string& sourceCode)
+static std::string compilerOutput;
+static std::atomic<bool> compilerBusy{false};
+
+// internal worker
+static void CompilerThread(std::string sourcePath, std::string outputExePath)
 {
-    namespace fs = std::filesystem;
+    compilerBusy = true;
     compilerOutput.clear();
+
+    fs::path src = sourcePath;
+    fs::path out = outputExePath;
+
+    if (!fs::exists(src)) {
+        compilerOutput = "[Compiler] Error: Source file not found.\n";
+        compilerBusy = false;
+        return;
+    }
+
+    fs::path mingwPath = fs::current_path() / "mingw64" / "bin" / "g++.exe";
+    if (!fs::exists(mingwPath)) {
+        compilerOutput = "[Compiler] Error: g++.exe not found in mingw64/bin.\n";
+        compilerBusy = false;
+        return;
+    }
+
+    // Ensure output directory exists
+    fs::create_directories(out.parent_path());
+
+    std::stringstream cmd;
+    cmd << "\"" << mingwPath.string() << "\" "
+        << "\"" << src.string() << "\" "
+        << "-o \"" << out.string() << "\" "
+        << "-std=c++17 -static-libgcc -static-libstdc++";
+
     compilerOutput += "[Compiler] Running g++...\n";
 
-    try {
-        // Determine executable directory
-        char exePath[MAX_PATH];
-        GetModuleFileNameA(NULL, exePath, MAX_PATH);
-        fs::path exeDir = fs::path(exePath).parent_path();
+#ifdef _WIN32
+    FILE* pipe = _popen(cmd.str().c_str(), "r");
+#else
+    FILE* pipe = popen(cmd.str().c_str(), "r");
+#endif
 
-        // Path to compiler
-        fs::path gppPath = exeDir / "mingw64" / "bin" / "g++.exe";
-        if (!fs::exists(gppPath)) {
-            compilerOutput += "[ERROR] g++.exe not found! Expected at:\n";
-            compilerOutput += gppPath.string() + "\n";
-            return;
-        }
-
-        // Prepare temp build directory
-        fs::path tempDir = exeDir / "build" / "temp";
-        fs::create_directories(tempDir);
-
-        fs::path tempSource = tempDir / "user_code.cpp";
-        fs::path outExe = tempDir / "user_program.exe";
-
-        // Write source code to file
-        FILE* f = fopen(tempSource.string().c_str(), "w");
-        if (!f) {
-            compilerOutput += "[ERROR] Could not create temp source file.\n";
-            return;
-        }
-        fwrite(sourceCode.c_str(), 1, sourceCode.size(), f);
-        fclose(f);
-
-        // Build compile command
-        std::string command = "\"" + gppPath.string() + "\" \"" + tempSource.string() +
-                              "\" -o \"" + outExe.string() + "\" 2>&1";
-
-        compilerOutput += "Command: " + command + "\n";
-
-        // Run compiler and capture output
-        FILE* pipe = _popen(command.c_str(), "r");
-        if (!pipe) {
-            compilerOutput += "[ERROR] Failed to start compiler process.\n";
-            return;
-        }
-
-        char buffer[256];
-        while (fgets(buffer, sizeof(buffer), pipe))
-            compilerOutput += buffer;
-        int result = _pclose(pipe);
-
-        if (result == 0) {
-            compilerOutput += "\n[Compiler] Compilation successful.\n";
-            compilerOutput += "[Running program...]\n";
-
-            // Execute compiled program
-            FILE* progPipe = _popen(outExe.string().c_str(), "r");
-            if (progPipe) {
-                while (fgets(buffer, sizeof(buffer), progPipe))
-                    compilerOutput += buffer;
-                _pclose(progPipe);
-            }
-            compilerOutput += "\n[Program finished.]\n";
-        } else {
-            compilerOutput += "\n[Compiler] Compilation failed.\n";
-        }
-
-    } catch (const std::exception& e) {
-        compilerOutput += std::string("[EXCEPTION] ") + e.what() + "\n";
+    if (!pipe) {
+        compilerOutput += "[Compiler] Failed to start g++.\n";
+        compilerBusy = false;
+        return;
     }
+
+    char buffer[256];
+    while (fgets(buffer, sizeof(buffer), pipe)) {
+        compilerOutput += buffer;
+    }
+
+#ifdef _WIN32
+    int result = _pclose(pipe);
+#else
+    int result = pclose(pipe);
+#endif
+
+    if (result == 0)
+        compilerOutput += "\n[Compiler] Compilation successful.\n";
+    else
+        compilerOutput += "\n[Compiler] Compilation failed.\n";
+
+    compilerBusy = false;
 }
 
+void RunCompilerAsync(const std::string& sourcePath, const std::string& outputExePath)
+{
+    if (compilerBusy) {
+        compilerOutput = "[Compiler] Already compiling.\n";
+        return;
+    }
+    std::thread(CompilerThread, sourcePath, outputExePath).detach();
+}
+
+bool IsCompilerBusy() { return compilerBusy; }
+const std::string& GetCompilerOutput() { return compilerOutput; }
+void ClearCompilerOutput() { compilerOutput.clear(); }

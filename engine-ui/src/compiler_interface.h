@@ -1,24 +1,16 @@
 #pragma once
 #include <string>
+#include <atomic>
 
-// Compile a source file into an executable.
-// - sourcePath: path to the .cpp file (input)
-// - exePath: desired output executable path
-// - mingwGppPath: path to g++.exe (relative or absolute). Example: "../mingw64/bin/g++.exe"
-// - outLog: receives the full build log (stdout+stderr contents).
-// Returns: the process exit code (0 = success typically).
-int compileWithMinGW(const std::string& sourcePath,
-                     const std::string& exePath,
-                     const std::string& mingwGppPath,
-                     const std::string& extraFlags,
-                     std::string& outLog);
+// Starts compiling the given source file asynchronously and outputs the exe
+// to the specified path. Returns immediately; use IsCompilerBusy() to check.
+void RunCompilerAsync(const std::string& sourcePath, const std::string& outputExePath);
 
-// Run an executable without opening a console window.
-// - exePath: path to the exe to run
-// - workingDir: working directory for the process (can be "")
-// - outError: receives an error message if spawning fails
-// Returns: true if the process was launched successfully.
-bool runExecutableNoConsole(const std::string& exePath,
-                            const std::string& workingDir,
-                            std::string& outError);
+// Returns true if a compilation is currently running.
+bool IsCompilerBusy();
 
+// Returns the full compiler console log (output + errors).
+const std::string& GetCompilerOutput();
+
+// Clears the stored compiler log.
+void ClearCompilerOutput();
