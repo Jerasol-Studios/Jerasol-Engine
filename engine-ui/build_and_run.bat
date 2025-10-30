@@ -1,57 +1,62 @@
 @echo off
-setlocal enabledelayedexpansion
+setlocal
 
-echo ======================================
-echo   Building and Running engine-ui
-echo ======================================
-echo.
+REM Choose GUI or CONSOLE mode (default GUI)
+if "%~1"=="" (
+  set APP_MODE=GUI
+) else (
+  set APP_MODE=%~1
+)
 
-:: --- Configuration ---
-set PROJECT_DIR=%~dp0
-set BUILD_DIR=%PROJECT_DIR%build
-set MINGW_DIR=%PROJECT_DIR%mingw64
-set SDL_DIR=%PROJECT_DIR%thirdparty\SDL2
-set CMAKE_EXE=%MINGW_DIR%\bin\cmake.exe
-set MAKE_EXE=%MINGW_DIR%\bin\mingw32-make.exe
+echo ============================================
+echo   Building and Running engine-ui (Mode: %APP_MODE%)
+echo ============================================
 
-:: --- Build Type Switch ---
-set MODE=%1
-if "%MODE%"=="" set MODE=CONSOLE
+REM Ensure we use the provided mingw64 tools
+set MINGW_ROOT=%~dp0mingw64
+set CMAKE_EXE=%MINGW_ROOT%\bin\cmake.exe
+set MAKE_EXE=%MINGW_ROOT%\bin\mingw32-make.exe
 
-echo Using build mode: %MODE%
-if not exist "%BUILD_DIR%" mkdir "%BUILD_DIR%"
-cd /d "%BUILD_DIR%"
+if not exist "%CMAKE_EXE%" (
+  echo ERROR: cmake.exe not found at %CMAKE_EXE%
+  echo Please place cmake.exe in mingw64\bin or install system cmake.
+  pause
+  exit /b 1
+)
 
-:: --- Clean old build files ---
-echo Cleaning old build files...
-del /q * >nul 2>&1
+if not exist "%MAKE_EXE%" (
+  echo ERROR: mingw32-make.exe not found at %MAKE_EXE%
+  pause
+  exit /b 1
+)
 
-:: --- Run CMake ---
-echo Configuring project with CMake...
+REM Clean build folder
+cd /d "%~dp0build" || (echo Cannot cd to build folder & pause & exit /b 1)
+del * /Q >nul 2>nul
+
+REM Configure
 "%CMAKE_EXE%" -G "MinGW Makefiles" ^
-    -DCMAKE_C_COMPILER="%MINGW_DIR%\bin\gcc.exe" ^
-    -DCMAKE_CXX_COMPILER="%MINGW_DIR%\bin\g++.exe" ^
-    -DCMAKE_MAKE_PROGRAM="%MAKE_EXE%" ^
-    -DCMAKE_BUILD_TYPE=Release ^
-    -DAPP_MODE=%MODE% ^
-    ..
+  -DCMAKE_C_COMPILER="%MINGW_ROOT%/bin/gcc.exe" ^
+  -DCMAKE_CXX_COMPILER="%MINGW_ROOT%/bin/g++.exe" ^
+  -DCMAKE_MAKE_PROGRAM="%MAKE_EXE%" ^
+  -DAPP_MODE=%APP_MODE% ^
+  ..
 
-if %errorlevel% neq 0 (
-    echo [ERROR] Configuration failed.
-    pause
-    exit /b %errorlevel%
+if errorlevel 1 (
+  echo [ERROR] CMake configuration failed.
+  pause
+  exit /b 1
 )
 
-:: --- Build ---
-echo Building project...
-"%MAKE_EXE%"
-if %errorlevel% neq 0 (
-    echo [ERROR] Build failed.
-    pause
-    exit /b %errorlevel%
+REM Build
+"%MAKE_EXE%" -j 4
+if errorlevel 1 (
+  echo [ERROR] Build failed.
+  pause
+  exit /b 1
 )
 
-:: --- Copy dlls ---
+REM Copy SDL2 DLL (if exists) to output
 echo ======================================
 echo copying dlls
 echo ======================================
@@ -67,16 +72,15 @@ echo ======================================
 echo dlls have succesfully been copyed
 echo ======================================
 
-:: --- Run the program ---
-echo [SUCCESS] Build completed. Launching engine-ui.exe...
-echo ======================================
-echo.
 
-if "%MODE%"=="CONSOLE" (
-    "%BUILD_DIR%\engine-ui.exe"
+REM Run the built application
+echo Launching...
+cd "%cd%\output"
+if /I "%APP_MODE%"=="GUI" (
+  REM Start without console inherit (WIN32 exe)
+  start "" "engine-ui.exe"
 ) else (
-    start "" "%BUILD_DIR%\engine-ui.exe"
+  engine-ui.exe
 )
 
-echo.
-pause
+endlocal

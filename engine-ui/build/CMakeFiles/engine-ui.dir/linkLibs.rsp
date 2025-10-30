@@ -1,1 +1,1 @@
-  -L"C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/lib"  -lSDL2 -lSDL2main -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+ "C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/lib/libSDL2.a" "C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/lib/libSDL2main.a" -luser32 -lgdi32 -lshell32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

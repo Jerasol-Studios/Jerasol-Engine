@@ -1,7 +1,5 @@
 #pragma once
+#include <vector>
 #include <string>
 
-struct FlowchartNode {
-    std::string name;
-    int id;
-};
+struct FlowNode { std::string name; float x,y; };

@@ -1,8 +1,17 @@
 #pragma once
 #include <string>
 
-// Run compiler for `sourcePath`. Returns combined stdout+stderr text from the compiler.
-std::string RunCompilerCommand(const std::string& sourcePath);
+struct Settings {
+    std::string mingw_path; // full path to g++.exe
+};
 
-// Run the compiled program (path to exe). Returns true if process launched.
-bool RunCompiledProgram(const std::string& exePath);
+Settings& GetSettings();
+void LoadSettings();
+void SaveSettings();
+
+// Run compiler and capture output shown in UI
+void RunCompilerAndCapture(const std::string& sourceFile);
+
+// Output UI
+void ShowCompilerOutputUI();
+void ClearCompilerOutput();

@@ -2,9 +2,8 @@
 #include "imgui.h"
 #include <string>
 
-void RenderUI();                     // draws the main UI window
-void SetTheme(bool dark);            // apply dark/light theme
-void RunCompiler(const std::string& sourcePath); // wrapper call to Compiler_Interface
-void ShowCompilerOutput();           // show compiler output window
-void ClearCompilerOutput();
+void RenderUI();
+void SetTheme(bool dark);
 
+// Compiler UI helpers (implemented in compiler_interface.cpp)
+void ShowCompilerOutputUI();
