@@ -1,114 +1,53 @@
 cmake_minimum_required(VERSION 3.20)
-project(engine-ui)
+project(engine_ui LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Detect build mode
-if(DEFINED APP_MODE)
-    message(STATUS "Using build mode: ${APP_MODE}")
-else()
-    set(APP_MODE "GUI")
-endif()
+# Root layout (adjust if your root differs)
+set(PROJ_ROOT ${CMAKE_SOURCE_DIR})
+set(SDL2_ROOT ${PROJ_ROOT}/thirdparty/SDL2)
+set(IMGUI_ROOT ${PROJ_ROOT}/thirdparty/imgui)
 
-message(STATUS "-- Using build mode: ${APP_MODE}")
-
-# ==========================================
-# Directory Setup
-# ==========================================
-set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")
-set(THIRDPARTY_DIR "${CMAKE_SOURCE_DIR}/thirdparty")
-set(OUTPUT_DIR "${CMAKE_SOURCE_DIR}/build/output")
-
-file(MAKE_DIRECTORY ${OUTPUT_DIR})
-
-# ==========================================
-# Include Paths
-# ==========================================
 include_directories(
-    ${SRC_DIR}
-    ${THIRDPARTY_DIR}
-    ${THIRDPARTY_DIR}/SDL2/include/
-    ${THIRDPARTY_DIR}/SDL2/include/SDL2/
-    ${THIRDPARTY_DIR}/imgui
+    ${IMGUI_ROOT}/
+    ${IMGUI_ROOT}/backends
+    ${SDL2_ROOT}/include/SDL2
+    ${PROJ_ROOT}/src
 )
 
-# ==========================================
-# SDL2 Config
-# ==========================================
-set(SDL2_LIB_DIR "${THIRDPARTY_DIR}/SDL2/lib")
-link_directories(${SDL2_LIB_DIR})
-
-# ==========================================
-# ImGui Sources
-# ==========================================
-set(IMGUI_DIR "${THIRDPARTY_DIR}/imgui")
+# ImGui sources (core)
 set(IMGUI_SOURCES
-    ${IMGUI_DIR}/imgui.cpp
-    ${IMGUI_DIR}/imgui_draw.cpp
-    ${IMGUI_DIR}/imgui_demo.cpp
-    ${IMGUI_DIR}/imgui_widgets.cpp
-    ${IMGUI_DIR}/imgui_tables.cpp
-    ${IMGUI_DIR}/backends/imgui_impl_sdl2.cpp
-    ${IMGUI_DIR}/backends/imgui_impl_sdlrenderer2.cpp
-    ${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp
+    ${IMGUI_ROOT}/imgui.cpp
+    ${IMGUI_ROOT}/imgui_demo.cpp
+    ${IMGUI_ROOT}/imgui_draw.cpp
+    ${IMGUI_ROOT}/imgui_widgets.cpp
+    ${IMGUI_ROOT}/imgui_tables.cpp
 )
 
-# ==========================================
-# Main Sources
-# ==========================================
-set(SOURCES
-    ${SRC_DIR}/main.cpp
-    ${SRC_DIR}/ui.cpp
-    ${SRC_DIR}/Compiler_Interface.cpp
-    ${IMGUI_SOURCES}
+# ImGui backend sources (we use SDL renderer 2 backend)
+set(IMGUI_BACKENDS
+    ${IMGUI_ROOT}/backends/imgui_impl_sdl2.cpp
+    ${IMGUI_ROOT}/backends/imgui_impl_sdlrenderer2.cpp
 )
 
-# ==========================================
-# Build Executable
-# ==========================================
-add_executable(engine-ui ${SOURCES})
-
-# ==========================================
-# Link Libraries
-# ==========================================
-if(WIN32)
-    target_link_libraries(engine-ui PRIVATE
-        SDL2main
-        SDL2
-        opengl32
-    )
-else()
-    target_link_libraries(engine-ui PRIVATE
-        SDL2
-        GL
-        pthread
-        dl
-    )
-endif()
-
-# ==========================================
-# Output Location
-# ==========================================
-set_target_properties(engine-ui PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIR}
+# Your app sources
+set(SRC
+    src/main.cpp
+    src/ui.cpp
+    src/Compiler_Interface.cpp
 )
 
-# ==========================================
-# Copy SDL2 DLL and Dependencies
-# ==========================================
-if(WIN32)
-    add_custom_command(TARGET engine-ui POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${SDL2_LIB_DIR}/SDL2.dll"
-        "${OUTPUT_DIR}/SDL2.dll"
-    )
-endif()
+add_executable(engine-ui WIN32 ${SRC} ${IMGUI_SOURCES} ${IMGUI_BACKENDS})
 
-# ==========================================
-# Final Info
-# ==========================================
-message(STATUS "=====================================")
-message(STATUS "Engine-UI Build Configured Successfully")
-message(STATUS "Output Directory: ${OUTPUT_DIR}")
-message(STATUS "=====================================")
+# Link flags / libraries (link SDL2 from thirdparty)
+target_link_directories(engine-ui PRIVATE ${SDL2_ROOT}/lib)
+target_link_libraries(engine-ui PRIVATE SDL2 SDL2main)
+
+# Copy SDL2.dll to output dir on build
+add_custom_command(TARGET engine-ui POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory $<TARGET_FILE_DIR:engine-ui>/output
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${SDL2_ROOT}/lib/SDL2.dll
+        $<TARGET_FILE_DIR:engine-ui>/SDL2.dll
+)

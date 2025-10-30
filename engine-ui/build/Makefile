@@ -200,30 +200,6 @@ src/ui.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\engine-ui.dir\build.make CMakeFiles/engine-ui.dir/src/ui.cpp.s
 .PHONY : src/ui.cpp.s
 
-thirdparty/imgui/backends/imgui_impl_opengl3.obj: thirdparty/imgui/backends/imgui_impl_opengl3.cpp.obj
-.PHONY : thirdparty/imgui/backends/imgui_impl_opengl3.obj
-
-# target to build an object file
-thirdparty/imgui/backends/imgui_impl_opengl3.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\engine-ui.dir\build.make CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_opengl3.cpp.obj
-.PHONY : thirdparty/imgui/backends/imgui_impl_opengl3.cpp.obj
-
-thirdparty/imgui/backends/imgui_impl_opengl3.i: thirdparty/imgui/backends/imgui_impl_opengl3.cpp.i
-.PHONY : thirdparty/imgui/backends/imgui_impl_opengl3.i
-
-# target to preprocess a source file
-thirdparty/imgui/backends/imgui_impl_opengl3.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\engine-ui.dir\build.make CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_opengl3.cpp.i
-.PHONY : thirdparty/imgui/backends/imgui_impl_opengl3.cpp.i
-
-thirdparty/imgui/backends/imgui_impl_opengl3.s: thirdparty/imgui/backends/imgui_impl_opengl3.cpp.s
-.PHONY : thirdparty/imgui/backends/imgui_impl_opengl3.s
-
-# target to generate assembly for a file
-thirdparty/imgui/backends/imgui_impl_opengl3.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\engine-ui.dir\build.make CMakeFiles/engine-ui.dir/thirdparty/imgui/backends/imgui_impl_opengl3.cpp.s
-.PHONY : thirdparty/imgui/backends/imgui_impl_opengl3.cpp.s
-
 thirdparty/imgui/backends/imgui_impl_sdl2.obj: thirdparty/imgui/backends/imgui_impl_sdl2.cpp.obj
 .PHONY : thirdparty/imgui/backends/imgui_impl_sdl2.obj
 
@@ -410,9 +386,6 @@ help:
 	@echo ... src/ui.obj
 	@echo ... src/ui.i
 	@echo ... src/ui.s
-	@echo ... thirdparty/imgui/backends/imgui_impl_opengl3.obj
-	@echo ... thirdparty/imgui/backends/imgui_impl_opengl3.i
-	@echo ... thirdparty/imgui/backends/imgui_impl_opengl3.s
 	@echo ... thirdparty/imgui/backends/imgui_impl_sdl2.obj
 	@echo ... thirdparty/imgui/backends/imgui_impl_sdl2.i
 	@echo ... thirdparty/imgui/backends/imgui_impl_sdl2.s

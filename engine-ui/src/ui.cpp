@@ -1,150 +1,185 @@
 #include "ui.h"
 #include "Compiler_Interface.h"
-#include <fstream>
-#include <filesystem>
-#include <string>
-#include <iostream>
-#include <cstdlib>
-
-#ifdef _WIN32
 #include <windows.h>
-#endif
+#include <commdlg.h>
+#include <filesystem>
+#include <fstream>
+#include <vector>
+#include <string>
+#include <imgui.h>
 
-namespace fs = std::filesystem;
+static std::string selectedSource;
+static std::string compilerOutput;
+static bool darkTheme = true;
+
+// helper: open file dialog for .cpp
+static std::string OpenFileDialogCPP()
+{
+    char filename[MAX_PATH] = "";
+    OPENFILENAMEA ofn{};
+    ofn.lStructSize = sizeof(ofn);
+    ofn.hwndOwner = nullptr;
+    ofn.lpstrFilter = "C++ Source Files (*.cpp)\0*.cpp\0All Files (*.*)\0*.*\0";
+    ofn.lpstrFile = filename;
+    ofn.nMaxFile = MAX_PATH;
+    ofn.Flags = OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST;
+    ofn.lpstrDefExt = "cpp";
+
+    if (GetOpenFileNameA(&ofn)) {
+        return std::string(filename);
+    }
+    return "";
+}
+
+void ClearCompilerOutput()
+{
+    compilerOutput.clear();
+}
+
+void RunCompiler(const std::string& sourcePath)
+{
+    if (sourcePath.empty()) {
+        compilerOutput = "[Compiler] No source file selected.\n";
+        return;
+    }
+    compilerOutput = RunCompilerCommand(sourcePath);
+}
+
+void ShowCompilerOutput()
+{
+    ImGui::Begin("Compiler Output", nullptr, ImGuiWindowFlags_NoCollapse);
+    ImGui::Text("Compiler Output");
+    ImGui::Separator();
+
+    if (ImGui::Button("Clear")) {
+        ClearCompilerOutput();
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Copy")) {
+        ImGui::SetClipboardText(compilerOutput.c_str());
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Recompile")) {
+        RunCompiler(selectedSource);
+    }
+
+    ImGui::SameLine();
+    if (ImGui::Button("Run Program")) {
+        // use same output path as Compiler_Interface: build\output\program.exe
+        RunCompiledProgram("build\\output\\program.exe");
+    }
+
+    ImGui::Dummy(ImVec2(0, 8));
+    ImGui::BeginChild("compiler_scroll", ImVec2(0, 0), true, ImGuiWindowFlags_HorizontalScrollbar);
+    if (compilerOutput.empty()) {
+        ImGui::TextDisabled("No output yet.");
+    } else {
+        ImGui::TextUnformatted(compilerOutput.c_str());
+    }
+    ImGui::EndChild();
+    ImGui::End();
+}
 
 void SetTheme(bool dark)
 {
-    if (dark)
-        ImGui::StyleColorsDark();
-    else
-        ImGui::StyleColorsLight();
+    darkTheme = dark;
+    if (darkTheme) ImGui::StyleColorsDark();
+    else ImGui::StyleColorsLight();
 }
 
 void RenderUI()
 {
-    static float panelWidth = 160.0f;
-    static bool settingsOpen = false;
-    static bool showFileMenu = false;
-    static bool darkMode = true;
-    static char projectName[128] = "MyProject";
+    // Main window - simple top bar and left resizable panel
+    static float leftPanelWidth = 200.0f;
+    static bool draggingPanel = false;
 
-    // Left Panel
-    ImGui::SetNextWindowPos(ImVec2(0, 20));
-    ImGui::SetNextWindowSize(ImVec2(panelWidth, ImGui::GetIO().DisplaySize.y - 20));
-    ImGui::Begin("Panel", nullptr,
-                 ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize |
-                 ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
+    ImGui::SetNextWindowPos(ImVec2(0,0), ImGuiCond_Always);
+    ImGui::SetNextWindowSize(ImGui::GetIO().DisplaySize, ImGuiCond_Always);
 
-    ImGui::Text("Jerasol Engine");
+    ImGui::Begin("Engine-UI Main", nullptr,
+        ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
+
+    // Top Bar
+    ImGui::BeginChild("TopBar", ImVec2(0, 30), false);
+    if (ImGui::BeginMenuBar()) {
+        if (ImGui::BeginMenu("File")) {
+            if (ImGui::MenuItem("Open\tCtrl+O")) {
+                std::string p = OpenFileDialogCPP();
+                if (!p.empty()) selectedSource = p;
+            }
+            if (ImGui::MenuItem("Save\tCtrl+S")) {
+                // hook later
+            }
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Settings")) {
+            if (ImGui::MenuItem("Dark Mode", nullptr, darkTheme)) SetTheme(true);
+            if (ImGui::MenuItem("Light Mode", nullptr, !darkTheme)) SetTheme(false);
+            ImGui::EndMenu();
+        }
+        ImGui::EndMenuBar();
+    }
+    ImGui::EndChild();
+
     ImGui::Separator();
-    ImGui::Button("HOME", ImVec2(-1, 30));
-    ImGui::Button("FLOWCHART EDITOR", ImVec2(-1, 30));
-    ImGui::Button("CODE EDITOR", ImVec2(-1, 30));
 
-    ImGui::Dummy(ImVec2(0, 5));
-    ImGui::Text("Resize Panel:");
-    ImGui::SliderFloat("##panelWidth", &panelWidth, 120.0f, 400.0f);
-    ImGui::End();
+    // Content: left panel + separator + main area
+    ImGui::BeginChild("LeftPanel", ImVec2(leftPanelWidth, 0), true);
+    ImGui::Text("PANEL");
+    ImGui::Separator();
+    if (ImGui::Button("HOME")) {}
+    if (ImGui::Button("FLOWCHART EDITOR")) {}
+    if (ImGui::Button("CODE EDITOR")) {}
+    ImGui::EndChild();
 
-    // Top bar
-    ImGui::SetNextWindowPos(ImVec2(0, 0));
-    ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, 20));
-    ImGui::Begin("TopBar", nullptr,
-                 ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize |
-                 ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse |
-                 ImGuiWindowFlags_NoScrollbar);
-
-    if (ImGui::Button("FILE")) showFileMenu = !showFileMenu;
+    // Panel resize handle
     ImGui::SameLine();
-    if (ImGui::Button("SETTINGS")) settingsOpen = true;
-    ImGui::End();
-
-    if (showFileMenu) {
-        ImGui::SetNextWindowPos(ImVec2(0, 20));
-        ImGui::Begin("FileMenu", &showFileMenu,
-                     ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize |
-                     ImGuiWindowFlags_NoMove);
-        ImGui::Text("NEW (Ctrl+N)");
-        ImGui::Text("OPEN (Ctrl+O)");
-        ImGui::Text("SAVE (Ctrl+S)");
-        ImGui::Text("SAVE AS (Ctrl+Shift+S)");
-        ImGui::End();
+    ImGui::InvisibleButton("panel_resize", ImVec2(6, ImGui::GetContentRegionAvail().y));
+    if (ImGui::IsItemActive()) {
+        leftPanelWidth += ImGui::GetIO().MouseDelta.x;
+        if (leftPanelWidth < 120.0f) leftPanelWidth = 120.0f;
+        if (leftPanelWidth > 700.0f) leftPanelWidth = 700.0f;
     }
+    ImGui::SameLine();
 
-    if (settingsOpen) {
-        ImGui::Begin("Settings", &settingsOpen);
-        if (ImGui::TreeNode("Preferences")) {
-            if (ImGui::Checkbox("Dark Mode", &darkMode))
-                SetTheme(darkMode);
-            ImGui::TreePop();
-        }
-        ImGui::End();
-    }
-
-    // Code editor
-    static char codeText[8192] =
-        "#include <iostream>\nint main(){ std::cout << \"Hello from Jerasol!\"; return 0; }";
-
-    static std::string compileOutput;
-    static bool showOutput = false;
-    static std::string exePath;
-
-    ImGui::SetNextWindowPos(ImVec2(panelWidth, 20));
-    ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x - panelWidth,
-                                    ImGui::GetIO().DisplaySize.y - 20));
-    ImGui::Begin("Code Editor", nullptr,
-                 ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
-
-    ImGui::InputText("Project Name", projectName, sizeof(projectName));
+    // Main content area
+    ImGui::BeginChild("MainArea", ImVec2(0, 0), false);
+    ImGui::Text("Compiler Panel");
     ImGui::Separator();
-    ImGui::InputTextMultiline("##code", codeText, sizeof(codeText),
-                              ImVec2(-1, 300), ImGuiInputTextFlags_AllowTabInput);
 
-    std::string srcPath = "build/output/projects/" + std::string(projectName) + "/source.cpp";
-    exePath = "build/output/projects/" + std::string(projectName) + "/program.exe";
-
-    if (!IsCompilerBusy()) {
-        if (ImGui::Button("Compile")) {
-            fs::create_directories(fs::path(srcPath).parent_path());
-            std::ofstream ofs(srcPath);
-            ofs << codeText;
-            ofs.close();
-
-            ClearCompilerOutput();
-            RunCompilerAsync(srcPath, exePath);
-            showOutput = true;
-        }
+    ImGui::Text("Selected Source:");
+    if (selectedSource.empty()) {
+        ImGui::TextColored(ImVec4(1,0.4f,0.4f,1.0f), "No file selected.");
     } else {
-        ImGui::Text("Compiling...");
+        ImGui::TextWrapped("%s", selectedSource.c_str());
+    }
+
+    ImGui::Dummy(ImVec2(0,8));
+    if (ImGui::Button("Choose file")) {
+        std::string p = OpenFileDialogCPP();
+        if (!p.empty()) selectedSource = p;
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Compile")) {
+        RunCompiler(selectedSource);
+        // capture last compiler output for display
+        // we call ShowCompilerOutput window to display
     }
 
     ImGui::SameLine();
-    if (ImGui::Button("Clear Output"))
-        compileOutput.clear();
-
-    compileOutput = GetCompilerOutput();
-
-    if (showOutput) {
-        ImGui::Separator();
-        ImGui::Text("Compiler Output:");
-        ImGui::BeginChild("compiler_output", ImVec2(-1, 150), true);
-        ImGui::TextWrapped("%s", compileOutput.c_str());
-        ImGui::EndChild();
+    if (ImGui::Button("Open Output Window")) {
+        // will show in separate window below
     }
 
-    // --- New Section: Run Executable Button ---
-    if (fs::exists(exePath) && compileOutput.find("successful") != std::string::npos) {
-        if (ImGui::Button("Run Executable")) {
-#ifdef _WIN32
-            std::string fullPath = fs::absolute(exePath).string();
-            ShellExecuteA(nullptr, "open", fullPath.c_str(), nullptr, nullptr, SW_SHOW);
-#else
-            std::string fullPath = fs::absolute(exePath).string();
-            std::system(fullPath.c_str());
-#endif
-        }
-    }
+    // Simple toolbar area
+    ImGui::Separator();
+    ImGui::TextWrapped("Quick actions: Compile -> run -> inspect output.");
 
-    ImGui::End();
+    ImGui::EndChild(); // MainArea
+
+    ImGui::End(); // Engine-UI Main
+
+    // Show output window (separate floating window)
+    ShowCompilerOutput();
 }
 

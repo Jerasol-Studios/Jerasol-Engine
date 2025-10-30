@@ -15,7 +15,7 @@
 ########################
 
 //No help, variable specified on the command line.
-APP_MODE:UNINITIALIZED=Gui
+APP_MODE:UNINITIALIZED=GUI
 
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/bin/addr2line.exe
@@ -113,7 +113,7 @@ CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=C:/Users/student/Documents/Jerasol-Engin
 CMAKE_GNUtoMS:BOOL=OFF
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/engine-ui
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/engine_ui
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/bin/ld.exe
@@ -160,7 +160,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=engine-ui
+CMAKE_PROJECT_NAME:STATIC=engine_ui
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=
@@ -261,13 +261,13 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
-engine-ui_BINARY_DIR:STATIC=C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/build
+engine_ui_BINARY_DIR:STATIC=C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/build
 
 //Value Computed by CMake
-engine-ui_IS_TOP_LEVEL:STATIC=ON
+engine_ui_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-engine-ui_SOURCE_DIR:STATIC=C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui
+engine_ui_SOURCE_DIR:STATIC=C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui
 
 
 ########################
