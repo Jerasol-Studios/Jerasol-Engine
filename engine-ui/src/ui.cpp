@@ -122,15 +122,15 @@ static void DrawToolbar(FlowchartEditor& flowEditor, CompilerInterface& compiler
     }
 
     // keyboard shortcuts
-    if (ImGui::GetIO().KeyCtrl && ImGui::IsKeyPressedMap(ImGuiKey_N)) {
+    if (ImGui::GetIO().KeyCtrl && ImGui::IsKeyPressed(ImGuiKey_N)) {
         codeBuffer.assign(1,'\0');
         currentFilePath.clear();
         currentPage = EditorPage::TextEditor;
     }
-    if (ImGui::GetIO().KeyCtrl && ImGui::IsKeyPressedMap(ImGuiKey_O)) {
+    if (ImGui::GetIO().KeyCtrl && ImGui::IsKeyPressed(ImGuiKey_O)) {
         fileModalOpen = true;
     }
-    if (ImGui::GetIO().KeyCtrl && ImGui::IsKeyPressedMap(ImGuiKey_S)) {
+    if (ImGui::GetIO().KeyCtrl && ImGui::IsKeyPressed(ImGuiKey_S)) {
         if (ImGui::GetIO().KeyShift) {
             ImGui::OpenPopup("Save As");
         } else {
@@ -180,7 +180,7 @@ static void DrawTextEditor(CompilerInterface& compiler) {
     }
     ImGui::SameLine();
     if (ImGui::Button("Run")) {
-        compiler.RunExecutable("output_program.exe");
+        compiler.RunExecutable("output_program.exe", ".");
     }
     ImGui::SameLine();
     if (ImGui::Button("Clear Output")) compiler.ClearOutput();

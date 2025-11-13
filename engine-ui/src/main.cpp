@@ -91,7 +91,7 @@ int main(int, char**)
         if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
         {
             SDL_Window* backup_window = SDL_GL_GetCurrentWindow();
-            SDL_Renderer* backup_renderer = SDL_GL_GetCurrentRenderer();
+            SDL_Renderer* backup_renderer = SDL_GetRenderer(SDL_GL_GetCurrentWindow());
             ImGui::UpdatePlatformWindows();
             ImGui::RenderPlatformWindowsDefault();
             SDL_GL_MakeCurrent(backup_window, backup_renderer);

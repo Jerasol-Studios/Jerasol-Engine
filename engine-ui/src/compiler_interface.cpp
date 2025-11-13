@@ -1,4 +1,5 @@
 #include "compiler_interface.h"
+#include "imgui.h"
 #include <iostream>
 #include <filesystem>
 #include <fstream>
@@ -25,6 +26,17 @@ bool CompilerInterface::CompileCode(const std::string& inputFile, const std::str
         lastOutput = "[Compiler] Failed to start compilation process.";
         return false;
     }
+
+
+void CompilerInterface::ClearOutput() {
+    outputLog.clear();
+}
+
+void CompilerInterface::RenderOutput() {
+    ImGui::BeginChild("Compiler Output", ImVec2(0, 200), true);
+    ImGui::TextUnformatted(outputLog.c_str());
+    ImGui::EndChild();
+}
 
     char buffer[256];
     std::string captured;

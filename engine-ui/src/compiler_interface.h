@@ -7,9 +7,12 @@ class CompilerInterface {
 public:
     CompilerInterface();
 
+    void ClearOutput();
+    void RenderOutput();
     bool CompileCode(const std::string& inputFile, const std::string& outputFile);
     bool RunExecutable(const std::string& exePath, const std::string& workingDir);
     std::string GetLastOutput() const;
+    std::string outputLog;
 
 private:
     std::string mingwPath;
