@@ -1,87 +1,59 @@
 cmake_minimum_required(VERSION 3.20)
-project(engine-ui LANGUAGES C CXX)
+project(engine_ui LANGUAGES CXX)
 
-# ======================================
-#  Basic Configuration
-# ======================================
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/output)
 
-# ======================================
-#  Detect Build Mode
-# ======================================
-if(NOT DEFINED ENGINE_BUILD_MODE)
-    set(ENGINE_BUILD_MODE "GUI")
-endif()
+option(APP_MODE "GUI or CONSOLE" "GUI") # pass -DAPP_MODE=CONSOLE to build console mode
 
-message(STATUS "-- Using build mode: ${ENGINE_BUILD_MODE}")
+# paths
+set(THIRD_PARTY ${CMAKE_SOURCE_DIR}/thirdparty)
+set(SDL2_DIR ${THIRD_PARTY}/SDL2)
+set(IMGUI_DIR ${THIRD_PARTY}/imgui)
+set(JSON_HPP ${THIRD_PARTY}/json.hpp)
 
-if(${ENGINE_BUILD_MODE} STREQUAL "GUI")
-    add_definitions(-DAPP_MODE_GUI)
-else()
-    add_definitions(-DAPP_MODE_CONSOLE)
-endif()
+# includes
+include_directories(${IMGUI_DIR})
+include_directories(${THIRD_PARTY})
+include_directories(${IMGUI_DIR}/backends)
+include_directories(${SDL2_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/src)
+include_directories(${SDL2_DIR}/include/SDL2)
 
-# ======================================
-#  Include Directories
-# ======================================
-include_directories(
-    ${CMAKE_SOURCE_DIR}/src
-    ${CMAKE_SOURCE_DIR}/thirdparty/imgui
-    ${CMAKE_SOURCE_DIR}/thirdparty/imgui/backends
-    ${CMAKE_SOURCE_DIR}/thirdparty/SDL2/include
-    ${CMAKE_SOURCE_DIR}/thirdparty/json
+# source files
+file(GLOB IMGUI_SRC
+    ${IMGUI_DIR}/*.cpp
+    ${IMGUI_DIR}/backends/imgui_impl_sdl2.cpp
+    ${IMGUI_DIR}/backends/imgui_impl_sdlrenderer2.cpp
 )
 
-# ======================================
-#  Source Files
-# ======================================
-set(SOURCES
-    src/main.cpp
-    src/ui.cpp
-    src/flowchart.cpp
-    src/compiler_interface.cpp
-
-    thirdparty/imgui/imgui.cpp
-    thirdparty/imgui/imgui_draw.cpp
-    thirdparty/imgui/imgui_tables.cpp
-    thirdparty/imgui/imgui_widgets.cpp
-    thirdparty/imgui/imgui_demo.cpp
-
-    thirdparty/imgui/backends/imgui_impl_sdl2.cpp
-    thirdparty/imgui/backends/imgui_impl_sdlrenderer2.cpp
+file(GLOB SRC
+    ${CMAKE_SOURCE_DIR}/src/*.cpp
 )
 
-# ======================================
-#  Executable Target
-# ======================================
-add_executable(engine-ui ${SOURCES})
+add_executable(engine-ui ${SRC} ${IMGUI_SRC})
 
-# ======================================
-#  SDL2 Linking
-# ======================================
-set(SDL2_PATH "${CMAKE_SOURCE_DIR}/thirdparty/SDL2")
-
-if(WIN32)
-    target_link_libraries(engine-ui
-        ${SDL2_PATH}/lib/libSDL2.a
-        ${SDL2_PATH}/lib/libSDL2main.a
-        imm32
-        setupapi
-        version
-        winmm
-    )
-else()
-    find_package(SDL2 REQUIRED)
-    target_link_libraries(engine-ui ${SDL2_LIBRARIES})
+# definitions for subsystem (avoid console window when GUI)
+if (APP_MODE STREQUAL "GUI")
+    if (WIN32)
+        set_target_properties(engine-ui PROPERTIES LINK_FLAGS "/SUBSYSTEM:WINDOWS")
+    endif()
 endif()
 
-# ======================================
-#  Output Info
-# ======================================
-message(STATUS "-- =====================================")
-message(STATUS "-- Engine-UI Build Configured Successfully")
-message(STATUS "-- Output Directory: ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
-message(STATUS "-- =====================================")
+# link SDL2 static lib if present
+# Prefer prebuilt libs at thirdparty/SDL2/lib
+if (EXISTS "${SDL2_DIR}/lib/libSDL2.a")
+    target_link_libraries(engine-ui PRIVATE "${SDL2_DIR}/lib/libSDL2.a")
+endif()
+
+# link Win32 libs required by SDL2
+if (WIN32)
+    target_link_libraries(engine-ui PRIVATE Ws2_32 winmm imm32 setupapi Version)
+endif()
+
+# copy runtime DLL (SDL2.dll) next to exe if present
+add_custom_command(TARGET engine-ui POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/output
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:engine-ui> ${CMAKE_BINARY_DIR}/output/
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${SDL2_DIR}/lib/SDL2.dll" ${CMAKE_BINARY_DIR}/output/ || true
+)

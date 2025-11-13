@@ -1,270 +1,241 @@
-// ui.cpp
 #include "ui.h"
-#include "compiler_interface.h"
-
 #include "imgui.h"
+#include "imgui_internal.h"
+#include <fstream>
+#include <sstream>
 #include <vector>
 #include <string>
-#include <algorithm>
-#include <fstream>
-#include "json.hpp"
 
-// Simple resizable left panel width saved in-memory
-static float panelWidth = 240.0f;
-static bool fileMenuOpen = false;
-static bool settingsOpen = false;
+static EditorPage currentPage = EditorPage::Home;
 static bool darkTheme = true;
 
-// Code buffer (ImGui needs char*)
-struct CodeBuffer {
-    std::vector<char> buf;
-    CodeBuffer() { load_from_file("code.txt"); }
-    void load_from_file(const char* path) {
-        std::ifstream in(path);
-        if (!in.is_open()) {
-            std::string def = "// Write your code here...\n";
-            buf.assign(def.begin(), def.end());
-            buf.push_back('\0');
-            return;
+// code buffer as dynamic char array to satisfy ImGui InputTextMultiline
+static std::vector<char> codeBuffer;
+static std::string currentFilePath;
+static bool fileModalOpen = false;
+static char filePathInput[1024] = "";
+
+static void ensure_codebuf_size(size_t minSize) {
+    if (codeBuffer.size() < minSize+1) {
+        codeBuffer.resize(minSize+1);
+    }
+}
+
+static void open_file_into_buffer(const std::string& path) {
+    std::ifstream f(path, std::ios::binary);
+    if (!f.is_open()) return;
+    std::ostringstream ss;
+    ss << f.rdbuf();
+    std::string s = ss.str();
+    ensure_codebuf_size(s.size());
+    memcpy(codeBuffer.data(), s.data(), s.size());
+    codeBuffer[s.size()] = '\0';
+    currentFilePath = path;
+}
+
+static void save_buffer_to_file(const std::string& path) {
+    std::ofstream f(path, std::ios::binary);
+    if (!f.is_open()) return;
+    f.write(codeBuffer.data(), strlen(codeBuffer.data()));
+    currentFilePath = path;
+}
+
+static void FileOpenModal() {
+    if (!fileModalOpen) return;
+    ImGui::OpenPopup("Open File###openfile");
+    fileModalOpen = false;
+}
+
+static void DoFileModal() {
+    if (ImGui::BeginPopupModal("Open File###openfile", NULL, ImGuiWindowFlags_AlwaysAutoResize)) {
+        ImGui::Text("Enter file path:");
+        ImGui::InputText("##path", filePathInput, IM_ARRAYSIZE(filePathInput));
+        if (ImGui::Button("Open")) {
+            open_file_into_buffer(std::string(filePathInput));
+            ImGui::CloseCurrentPopup();
         }
-        std::string s((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
-        buf.assign(s.begin(), s.end());
-        buf.push_back('\0');
+        ImGui::SameLine();
+        if (ImGui::Button("Cancel")) { ImGui::CloseCurrentPopup(); }
+        ImGui::EndPopup();
     }
-    void save_to_file(const char* path) {
-        std::ofstream out(path);
-        if (!out.is_open()) return;
-        out.write(buf.data(), buf.size() ? (buf.size()-1) : 0);
-    }
-    std::string str() const { return std::string(buf.data()); }
-};
-static CodeBuffer codeBuf;
-
-// Flow node
-struct FlowNode { std::string name; ImVec2 pos; };
-static std::vector<FlowNode> nodes;
-
-static void DrawTopBar();
-static void DrawLeftPanel();
-static void DrawMainArea();
-
-void SetTheme(bool dark) {
-    darkTheme = dark;
-    if (dark) ImGui::StyleColorsDark();
-    else ImGui::StyleColorsLight();
 }
 
-void RenderUI() {
-    // Layout: top bar fixed
-    DrawTopBar();
-
-    // Left resizable panel
-    DrawLeftPanel();
-
-    // Main area (code editor / flowchart)
-    DrawMainArea();
-}
-
-static void DrawTopBar() {
-    ImGui::SetNextWindowPos(ImVec2(0,0));
-    ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, 28));
-    ImGuiWindowFlags flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings;
-    ImGui::Begin("TopBar", NULL, flags);
-    ImGui::SameLine(6);
-    if (ImGui::Button("FILE")) {
-        fileMenuOpen = !fileMenuOpen;
-    }
-    ImGui::SameLine();
-    if (ImGui::Button("SETTINGS")) {
-        settingsOpen = !settingsOpen;
-    }
-    ImGui::SameLine();
-    ImGui::Text("  Engine-UI");
-
-    // File dropdown anchored under top bar, sticking under FILE button
-    ImVec2 fileBtnPos = ImGui::GetItemRectMin();
-    if (fileMenuOpen) {
-        ImGui::OpenPopup("FileDropdown");
-        ImGui::SetNextWindowPos(ImVec2(fileBtnPos.x, 28));
-        if (ImGui::BeginPopup("FileDropdown")) {
-            if (ImGui::MenuItem("New", "Ctrl+N")) { codeBuf.buf.assign({'/','/','n','e','w','\n','\0'}); }
-            if (ImGui::MenuItem("Open", "Ctrl+O")) {
-                // simple open: reload code.txt
-                codeBuf.load_from_file("code.txt");
+static void DrawToolbar(FlowchartEditor& flowEditor, CompilerInterface& compiler) {
+    ImGuiIO& io = ImGui::GetIO();
+    if (ImGui::BeginMainMenuBar()) {
+        // FILE menu anchored to top bar
+        if (ImGui::BeginMenu("FILE")) {
+            if (ImGui::MenuItem("New", "Ctrl+N")) {
+                // New: clear buffer and unset path
+                codeBuffer.assign(1, '\0');
+                currentFilePath.clear();
+                currentPage = EditorPage::TextEditor;
+            }
+            if (ImGui::MenuItem("Open...", "Ctrl+O")) {
+                fileModalOpen = true;
             }
             if (ImGui::MenuItem("Save", "Ctrl+S")) {
-                codeBuf.save_to_file("code.txt");
+                if (currentFilePath.empty()) {
+                    ImGui::OpenPopup("Save As");
+                } else {
+                    save_buffer_to_file(currentFilePath);
+                }
             }
-            if (ImGui::MenuItem("Save As", "Ctrl+Shift+S")) {
-                // Save as same code.txt (placeholder)
-                codeBuf.save_to_file("code.txt");
+            if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S")) {
+                ImGui::OpenPopup("Save As");
             }
-            ImGui::EndPopup();
+            ImGui::EndMenu();
         }
-    } else {
-        ImGui::CloseCurrentPopup();
-    }
 
-    ImGui::End();
-
-    // Settings window
-    if (settingsOpen) {
-        ImGui::SetNextWindowPos(ImVec2(200, 100), ImGuiCond_FirstUseEver);
-        ImGui::Begin("Settings", &settingsOpen);
-        ImGui::Text("Preferences");
-        bool dark = darkTheme;
-        if (ImGui::Checkbox("Dark Mode", &dark)) {
-            SetTheme(dark);
+        if (ImGui::BeginMenu("SETTINGS")) {
+            if (ImGui::MenuItem(darkTheme ? "Light Mode" : "Dark Mode")) {
+                darkTheme = !darkTheme;
+                SetTheme(darkTheme);
+            }
+            ImGui::EndMenu();
         }
+
+        // quick page buttons on top bar
         ImGui::Separator();
-        ImGui::Text("MinGW (g++) Path:");
-        char bufpath[512] = {0};
-        std::string current = GetSettings().mingw_path;
-        strncpy(bufpath, current.c_str(), sizeof(bufpath)-1);
-        ImGui::InputText("g++.exe path", bufpath, sizeof(bufpath));
-        if (ImGui::Button("Set Path")) {
-            GetSettings().mingw_path = std::string(bufpath);
-            SaveSettings(); // write immediately
-        }
-        ImGui::End();
+        if (ImGui::Button("HOME")) currentPage = EditorPage::Home;
+        ImGui::SameLine();
+        if (ImGui::Button("FLOWCHART")) currentPage = EditorPage::Flowchart;
+        ImGui::SameLine();
+        if (ImGui::Button("CODE")) currentPage = EditorPage::TextEditor;
+
+        ImGui::EndMainMenuBar();
     }
+
+    // Save As popup
+    if (ImGui::BeginPopupModal("Save As", NULL, ImGuiWindowFlags_AlwaysAutoResize)) {
+        static char savePath[1024] = "";
+        ImGui::InputText("Save path", savePath, IM_ARRAYSIZE(savePath));
+        if (ImGui::Button("Save")) {
+            save_buffer_to_file(savePath);
+            ImGui::CloseCurrentPopup();
+        }
+        ImGui::SameLine();
+        if (ImGui::Button("Cancel")) {
+            ImGui::CloseCurrentPopup();
+        }
+        ImGui::EndPopup();
+    }
+
+    // keyboard shortcuts
+    if (ImGui::GetIO().KeyCtrl && ImGui::IsKeyPressedMap(ImGuiKey_N)) {
+        codeBuffer.assign(1,'\0');
+        currentFilePath.clear();
+        currentPage = EditorPage::TextEditor;
+    }
+    if (ImGui::GetIO().KeyCtrl && ImGui::IsKeyPressedMap(ImGuiKey_O)) {
+        fileModalOpen = true;
+    }
+    if (ImGui::GetIO().KeyCtrl && ImGui::IsKeyPressedMap(ImGuiKey_S)) {
+        if (ImGui::GetIO().KeyShift) {
+            ImGui::OpenPopup("Save As");
+        } else {
+            if (!currentFilePath.empty()) save_buffer_to_file(currentFilePath);
+            else ImGui::OpenPopup("Save As");
+        }
+    }
+
+    // file modal open
+    FileOpenModal();
+    DoFileModal();
 }
 
-static void DrawLeftPanel() {
-    // Panel area
-    ImGuiWindowFlags flags = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
-    ImGui::SetNextWindowPos(ImVec2(0,28));
-    ImGui::SetNextWindowSize(ImVec2(panelWidth, ImGui::GetIO().DisplaySize.y - 28));
-    ImGui::Begin("LeftPanel", NULL, flags);
-    if (ImGui::BeginDragDropTarget()) ImGui::EndDragDropTarget();
+static void DrawHome() {
+    ImGui::Begin("Home");
+    ImGui::Text("Welcome to the Engine UI (Phase 3)");
+    ImGui::Separator();
+    ImGui::TextWrapped("Use the top menu or buttons to switch between editors, create files, and compile.");
+    ImGui::End();
+}
 
-    if (ImGui::Button("HOME", ImVec2(-1, 0))) { /* switch screens handled in main area */ }
-    if (ImGui::Button("FLOWCHART EDITOR", ImVec2(-1, 0))) { /* handled in main area */ }
-    if (ImGui::Button("CODE EDITOR", ImVec2(-1, 0))) { /* handled in main area */ }
+static void DrawTextEditor(CompilerInterface& compiler) {
+    ImGui::Begin("Code Editor", nullptr, ImGuiWindowFlags_NoCollapse);
 
-    ImGui::Dummy(ImVec2(0,10));
-    ImGui::TextWrapped("Left panel (drag the right border to resize)");
+    // ensure buffer exists
+    ensure_codebuf_size(1024);
+
+    // label shows current path
+    if (currentFilePath.empty()) ImGui::Text("File: (unsaved)");
+    else ImGui::Text("File: %s", currentFilePath.c_str());
+
+    ImGui::Separator();
+
+    // InputTextMultiline - uses char*
+    ImGui::InputTextMultiline("##code", codeBuffer.data(), codeBuffer.size(),
+        ImVec2(-1, ImGui::GetTextLineHeight() * 20),
+        ImGuiInputTextFlags_AllowTabInput);
+
+    ImGui::Spacing();
+    if (ImGui::Button("Compile & Build")) {
+        // write temporary source if buffer changed
+        std::string tmpSource = "temp_build.cpp";
+        save_buffer_to_file(tmpSource);
+        // target exe
+        std::string exe = "output_program.exe";
+        compiler.CompileCode(tmpSource, exe);
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Run")) {
+        compiler.RunExecutable("output_program.exe");
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Clear Output")) compiler.ClearOutput();
+
+    ImGui::Separator();
+    compiler.RenderOutput();
+
+    ImGui::End();
+}
+
+void RenderUI(FlowchartEditor& flowEditor, CompilerInterface& compiler) {
+    DrawToolbar(flowEditor, compiler);
+
+    // Left fixed panel (resizable)
+    static float panelWidth = 220.0f;
+    ImGuiWindowFlags leftWinFlags = ImGuiWindowFlags_NoCollapse;
+    ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetFrameHeight()), ImGuiCond_Always);
+    ImGui::SetNextWindowSize(ImVec2(panelWidth, ImGui::GetIO().DisplaySize.y - ImGui::GetFrameHeight()));
+    ImGui::Begin("Panel", nullptr, leftWinFlags);
+    if (ImGui::Selectable("HOME", currentPage == EditorPage::Home)) currentPage = EditorPage::Home;
+    if (ImGui::Selectable("FLOWCHART", currentPage == EditorPage::Flowchart)) currentPage = EditorPage::Flowchart;
+    if (ImGui::Selectable("CODE EDITOR", currentPage == EditorPage::TextEditor)) currentPage = EditorPage::TextEditor;
     ImGui::End();
 
-    // Resize handle: simple invisible drag area
-    ImGui::SetNextWindowPos(ImVec2(panelWidth-4, 28));
-    ImGui::SetNextWindowSize(ImVec2(8, ImGui::GetIO().DisplaySize.y - 28));
-    ImGui::Begin("ResizeHandle", NULL, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs);
-    ImGui::InvisibleButton("##resize", ImVec2(8, ImGui::GetIO().DisplaySize.y - 28));
-    if (ImGui::IsItemActive()) {
-        float dx = ImGui::GetIO().MouseDelta.x;
-        panelWidth += dx;
+    // Allow resizing (simple approach)
+    ImGui::SetNextWindowPos(ImVec2(panelWidth - 4, ImGui::GetFrameHeight()), ImGuiCond_Always);
+    ImGui::SetNextWindowSize(ImVec2(8, ImGui::GetIO().DisplaySize.y - ImGui::GetFrameHeight()));
+    ImGui::Begin("##panel_resizer", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize);
+    if (ImGui::IsItemActive() && ImGui::IsMouseDragging(ImGuiMouseButton_Left)) {
+        panelWidth += ImGui::GetIO().MouseDelta.x;
         if (panelWidth < 120.0f) panelWidth = 120.0f;
         if (panelWidth > 600.0f) panelWidth = 600.0f;
     }
     ImGui::End();
-}
 
-static enum MainMode {MM_Home, MM_Code, MM_Flow} mainMode = MM_Home;
+    // Main area (rest of screen)
+    ImGui::SetNextWindowPos(ImVec2(panelWidth, ImGui::GetFrameHeight()), ImGuiCond_Always);
+    ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x - panelWidth, ImGui::GetIO().DisplaySize.y - ImGui::GetFrameHeight()));
+    ImGui::Begin("MainArea", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse);
 
-static void DrawHomeScreen() {
-    ImGui::Begin("Home", NULL, ImGuiWindowFlags_NoCollapse);
-    ImGui::Text("Welcome to Engine-UI");
-    if (ImGui::Button("Open Code Editor", ImVec2(200,0))) mainMode = MM_Code;
-    if (ImGui::Button("Open Flowchart Editor", ImVec2(200,0))) mainMode = MM_Flow;
-    ImGui::End();
-}
-
-static void DrawCodeEditor() {
-    ImGui::Begin("Code Editor", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_MenuBar);
-    if (ImGui::BeginMenuBar()) {
-        if (ImGui::BeginMenu("Build")) {
-            if (ImGui::MenuItem("Compile")) RunCompilerAndCapture("code.txt");
-            if (ImGui::MenuItem("Clear Output")) ClearCompilerOutput();
-            ImGui::EndMenu();
-        }
-        ImGui::EndMenuBar();
-    }
-    ImGui::SameLine();
-    if (ImGui::Button("Save")) codeBuf.save_to_file("code.txt");
-    ImGui::SameLine();
-    if (ImGui::Button("Compile")) RunCompilerAndCapture("code.txt");
-
-    // InputTextMultiline requires char* buffer
-    ImGui::Text("Source:");
-    ImGui::BeginChild("##codechild", ImVec2(-1, 300), true);
-    ImGui::PushTextWrapPos(0.0f);
-    ImGui::InputTextMultiline("##code", codeBuf.buf.data(), codeBuf.buf.size(),
-                              ImVec2(-1, -1),
-                              ImGuiInputTextFlags_AllowTabInput);
-    ImGui::PopTextWrapPos();
-    ImGui::EndChild();
-
-    // Compiler output area
-    ImGui::Separator();
-    ImGui::Text("Compiler Output:");
-    ShowCompilerOutputUI(); // from compiler_interface
-    ImGui::End();
-}
-
-static void DrawFlowchartEditor() {
-    ImGui::Begin("Flowchart Editor", NULL, ImGuiWindowFlags_NoCollapse);
-
-    static char newName[64] = "";
-    ImGui::InputText("Node Name", newName, sizeof(newName));
-    ImGui::SameLine();
-    if (ImGui::Button("Add Node")) {
-        nodes.push_back({ std::string(newName), ImVec2(300, 200) });
-        newName[0] = '\0';
-    }
-    ImGui::SameLine();
-    if (ImGui::Button("Save Flowchart")) {
-        // save simple JSON
-        nlohmann::json j = nlohmann::json::array();
-        for (auto &n : nodes) {
-            j.push_back({ {"name", n.name}, {"x", n.pos.x}, {"y", n.pos.y} });
-        }
-        std::ofstream out("flowchart.json");
-        out << j.dump(2);
-    }
-
-    ImGui::Separator();
-
-    // Canvas area (pan/zoom not implemented - simple)
-    ImGui::BeginChild("canvas", ImVec2(-1, -1), true);
-    for (size_t i=0;i<nodes.size();++i) {
-        ImGui::SetCursorScreenPos(nodes[i].pos);
-        ImGui::Button(("##node"+std::to_string(i)).c_str(), ImVec2(140,60));
-        ImGui::SetItemAllowOverlap();
-        if (ImGui::IsItemActive() && ImGui::IsMouseDragging(0)) {
-            ImVec2 delta = ImGui::GetIO().MouseDelta;
-            nodes[i].pos.x += delta.x;
-            nodes[i].pos.y += delta.y;
-        }
-        // Draw node label separately overlay
-        ImGui::SameLine();
-        ImGui::SetCursorScreenPos(ImVec2(nodes[i].pos.x + 8, nodes[i].pos.y + 8));
-        ImGui::Text("%s", nodes[i].name.c_str());
-    }
-    ImGui::EndChild();
-    ImGui::End();
-}
-
-static void DrawMainArea() {
-    float left = panelWidth;
-    ImGui::SetNextWindowPos(ImVec2(left, 28));
-    ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x - left, ImGui::GetIO().DisplaySize.y - 28));
-    ImGuiWindowFlags flags = ImGuiWindowFlags_NoTitleBar;
-    ImGui::Begin("MainArea", NULL, flags);
-
-    // Small top tabs
-    if (ImGui::Button("Home")) mainMode = MM_Home;
-    ImGui::SameLine();
-    if (ImGui::Button("Code")) mainMode = MM_Code;
-    ImGui::SameLine();
-    if (ImGui::Button("Flowchart")) mainMode = MM_Flow;
-    ImGui::Separator();
-
-    switch (mainMode) {
-        case MM_Home: DrawHomeScreen(); break;
-        case MM_Code: DrawCodeEditor(); break;
-        case MM_Flow: DrawFlowchartEditor(); break;
+    switch (currentPage) {
+        case EditorPage::Home: DrawHome(); break;
+        case EditorPage::TextEditor: DrawTextEditor(compiler); break;
+        case EditorPage::Flowchart: flowEditor.Render(); break;
     }
 
     ImGui::End();
+}
+
+void SetTheme(bool dark) {
+    ImGuiStyle& style = ImGui::GetStyle();
+    if (dark) ImGui::StyleColorsDark();
+    else ImGui::StyleColorsLight();
+
+    style.WindowRounding = 6.0f;
+    style.FrameRounding = 4.0f;
+    style.Colors[ImGuiCol_Header] = ImVec4(0.15f, 0.15f, 0.15f, 1.0f);
 }

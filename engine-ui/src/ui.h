@@ -1,9 +1,14 @@
 #pragma once
+#include "flowchart.h"
+#include "compiler_interface.h"
 #include "imgui.h"
-#include <string>
 
-void RenderUI();
+enum class EditorPage
+{
+    Home,
+    TextEditor,
+    Flowchart
+};
+
+void RenderUI(FlowchartEditor& flowEditor, CompilerInterface& compiler);
 void SetTheme(bool dark);
-
-// Compiler UI helpers (implemented in compiler_interface.cpp)
-void ShowCompilerOutputUI();

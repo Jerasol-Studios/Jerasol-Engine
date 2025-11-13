@@ -1,7 +1,6 @@
 @echo off
 
-//SET /P MODE= choose and type GUI or CONSOLE 
-MODE = GUI
+//SET /P MODE= choose and type GUI or CONSOLE
 
 echo ======================================
 echo Running %MODE% build 

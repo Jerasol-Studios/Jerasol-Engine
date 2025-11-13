@@ -1,17 +1,21 @@
-#pragma once
+#ifndef COMPILER_INTERFACE_H
+#define COMPILER_INTERFACE_H
+
 #include <string>
 
-struct Settings {
-    std::string mingw_path; // full path to g++.exe
+class CompilerInterface {
+public:
+    CompilerInterface();
+
+    bool CompileCode(const std::string& inputFile, const std::string& outputFile);
+    bool RunExecutable(const std::string& exePath, const std::string& workingDir);
+    std::string GetLastOutput() const;
+
+private:
+    std::string mingwPath;
+    std::string gppPath;
+    std::string makePath;
+    std::string lastOutput;
 };
 
-Settings& GetSettings();
-void LoadSettings();
-void SaveSettings();
-
-// Run compiler and capture output shown in UI
-void RunCompilerAndCapture(const std::string& sourceFile);
-
-// Output UI
-void ShowCompilerOutputUI();
-void ClearCompilerOutput();
+#endif

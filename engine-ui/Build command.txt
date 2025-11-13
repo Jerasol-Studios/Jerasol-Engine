@@ -1,0 +1,9 @@
+cd C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build && del * /Q && ^
+C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\cmake.exe -G "MinGW Makefiles" ^
+ -DCMAKE_C_COMPILER="C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\gcc.exe" ^
+ -DCMAKE_CXX_COMPILER="C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\g++.exe" ^
+ -DCMAKE_MAKE_PROGRAM="C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\mingw32-make.exe" ^
+ -DAPP_MODE=GUI .. && ^
+C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\mingw64\bin\mingw32-make.exe && ^
+copy /Y "C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\thirdparty\SDL2\include\SDL2\SDL2.dll" "C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build\output\" && ^
+start "" "C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\build\output\engine-ui.exe"

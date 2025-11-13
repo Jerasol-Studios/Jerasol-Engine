@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = @CMakeFiles/engine-ui.dir/includes_CXX.rsp
 
-CXX_FLAGS = -std=gnu++17 -Wall -Wextra -Wno-unused-parameter
+CXX_FLAGS = -std=gnu++17
 

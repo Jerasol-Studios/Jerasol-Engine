@@ -1,9 +1,18 @@
 CMakeFiles/engine-ui.dir/src/main.cpp.obj: \
  C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\main.cpp \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/imgui.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/imconfig.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/float.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/float.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_main.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_stdinc.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_config.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_platform.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/begin_code.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/close_code.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_config_windows.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/winsdkver.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/winapifamily.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/sdkddkver.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stddef.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/stddef.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/corecrt.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/_mingw.h \
@@ -14,11 +23,25 @@ CMakeFiles/engine-ui.dir/src/main.cpp.obj: \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdarg.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/stdarg.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/_mingw_stdarg.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stddef.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/stddef.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/string.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/assert.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/stdint.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_assert.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_atomic.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_audio.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_error.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_endian.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_mutex.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_thread.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/process.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/corecrt_startup.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/sys/types.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_rwops.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_clipboard.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_cpuinfo.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/intrin.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/setjmp.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/psdk_inc/intrin-impl.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/stdlib.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/cstdlib \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -35,114 +58,6 @@ CMakeFiles/engine-ui.dir/src/main.cpp.obj: \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/errno.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/std_abs.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/backends/imgui_impl_sdl2.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.h \
- C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\ui.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/string \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/requires_hosted.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stringfwd.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/memoryfwd.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/char_traits.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/postypes.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/cwchar \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/wchar.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/corecrt_wctype.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/_mingw_stat64.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/swprintf.inl \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/type_traits \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/version.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/allocator.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/new_allocator.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/new \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/exception.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/functexcept.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/exception_defines.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/move.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/cpp_type_traits.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/localefwd.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++locale.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/clocale \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/locale.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/stdio.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/iosfwd \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/cctype \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/ctype.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/ostream_insert.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/cxxabi_forced.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_iterator_base_funcs.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/concept_check.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/debug/assertions.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_iterator_base_types.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_iterator.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/ext/type_traits.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/ptr_traits.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_function.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/backward/binders.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/ext/numeric_traits.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_algobase.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_pair.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/utility.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/debug/debug.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/predefined_ops.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bit \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/concepts \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/refwrap.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/invoke.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/range_access.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/initializer_list \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/basic_string.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/ext/alloc_traits.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/alloc_traits.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_construct.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/string_view \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/functional_hash.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/hash_bytes.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/string_view.tcc \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/ext/string_conversions.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/cstdio \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/cerrno \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/charconv.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/basic_string.tcc \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/memory_resource.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/cstddef \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/uses_allocator.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/uses_allocator_args.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/tuple \
- C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\compiler_interface.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_main.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_stdinc.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_config.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_platform.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/begin_code.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/close_code.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_config_windows.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/winsdkver.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/winapifamily.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/sdkddkver.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/stdint.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_assert.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_atomic.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_audio.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_error.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_endian.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_mutex.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_thread.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/process.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/corecrt_startup.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/sys/types.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_rwops.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_clipboard.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_cpuinfo.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/intrin.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/setjmp.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/psdk_inc/intrin-impl.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/x86intrin.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/x86gprintrin.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/ia32intrin.h \
@@ -295,8 +210,100 @@ CMakeFiles/engine-ui.dir/src/main.cpp.obj: \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_locale.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_misc.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/SDL2/include/SDL2/SDL_main.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/fstream \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/istream \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/imgui.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/imconfig.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/float.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/float.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/string.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/assert.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/backends/imgui_impl_sdl2.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/thirdparty/imgui/backends/imgui_impl_sdlrenderer2.h \
+ C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\ui.h \
+ C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\flowchart.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/vector \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/requires_hosted.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_algobase.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/functexcept.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/exception_defines.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/cpp_type_traits.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/version.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/type_traits \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/ext/type_traits.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/ext/numeric_traits.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_pair.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/move.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/utility.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_iterator_base_types.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_iterator_base_funcs.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/concept_check.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/debug/assertions.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_iterator.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/ptr_traits.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/debug/debug.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/predefined_ops.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bit \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/concepts \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/allocator.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/new_allocator.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/new \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/exception.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/memoryfwd.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_construct.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_uninitialized.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/ext/alloc_traits.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/alloc_traits.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_vector.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/initializer_list \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_bvector.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/functional_hash.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/hash_bytes.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/refwrap.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/invoke.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stl_function.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/backward/binders.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/range_access.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/vector.tcc \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/memory_resource.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/cstddef \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/uses_allocator.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/uses_allocator_args.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/tuple \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/string \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/stringfwd.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/char_traits.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/postypes.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/cwchar \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/wchar.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/corecrt_wctype.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/_mingw_stat64.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/swprintf.inl \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/localefwd.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++locale.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/clocale \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/locale.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/stdio.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/iosfwd \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/cctype \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/x86_64-w64-mingw32/include/ctype.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/ostream_insert.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/cxxabi_forced.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/basic_string.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/string_view \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/string_view.tcc \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/ext/string_conversions.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/cstdio \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/cerrno \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/charconv.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/basic_string.tcc \
+ C:\Users\student\Documents\Jerasol-Engine-Program-Code\engine-ui\src\compiler_interface.h \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/iostream \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/ostream \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/ostream.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/ios \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/exception \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/exception_ptr.h \
@@ -335,12 +342,6 @@ CMakeFiles/engine-ui.dir/src/main.cpp.obj: \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/ctype_inline.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/locale_facets.tcc \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/basic_ios.tcc \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/ostream \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/ostream.h \
  C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/ostream.tcc \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/istream.tcc \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/codecvt.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/basic_file.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++io.h \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/fstream.tcc \
- C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/iostream
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/istream \
+ C:/Users/student/Documents/Jerasol-Engine-Program-Code/engine-ui/mingw64/include/c++/15.2.0/bits/istream.tcc
